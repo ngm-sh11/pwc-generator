@@ -179,7 +179,7 @@ body {
     padding: 10px;
 }
 .card-controls button {
-    padding: auto;
+    padding-left: auto;
 }
 .edit-sn {
     padding: 10px;
