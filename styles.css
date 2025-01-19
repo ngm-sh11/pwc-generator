@@ -195,7 +195,7 @@ body {
 }
 
 .description-container img {
-    position: absolute;
+    height: 300px;
+    position: static;
     left: 15px;
-    height: 600px;
 }
