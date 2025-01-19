@@ -125,7 +125,7 @@ body {
 
 .serial-number {
     position: absolute;
-    bottom: 15px; 
+    bottom: 35px; 
     top: 333px;
     left: 50%; /* 中央揃えのための位置調整 */
     transform: translateX(-50%); /* 中央揃え */
