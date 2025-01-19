@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassCard Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="description-container">
+        <div class="card-description">
+            <h2>Password Card Generator</h2>
+            <p>このページでは、脆弱なパスワードを強力なパスワードに変換するカードを生成できます。</p>
+            <p>このカードは、一意のシリアルナンバー(S/N)によって一定のアルゴリズムで生成されています。<br>スクリーンショットを撮り印刷するなどしてご活用ください。</p><br>
+            <p>このシステムは、Minute Objects社のプロダクト「PassCard」を元にデザインされていますが、<br>使用しているアルゴリズムは全く別のものですので、PassCardのシリアルナンバーとの互換性はありません。</p>
+            <p>また、シリアルナンバーは都度完全にランダムに生成されるものであるため、<br>偶然にも他のユーザー様とシリアル番号が被る可能性があるという点では、PassCardに比べると信頼性は劣りますが、<br>生成されるパターンは<h1>「1840京」</h1>通り以上あるため、被ることは滅多にありません。</p>
+            <p>また、シリアルナンバーやパターンの生成はすべてローカルで行われるため、<br>これらがお使いの端末から外部に発信されることはありません。</p>
+            <p>カードの下部に表示されている16桁の値がシリアルナンバーです。<br>カードを紛失した場合、これを画面下部のボックスに入力することで、お手元のカードと全く同じカードを再生成できます。<br>シリアルナンバーはしっかりメモし、安全な場所に保管しておくことをお勧めします。</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="front">
+            <div class="number-table">
+                <!-- 数字変換表 -->
+            </div>
+            <div class="table-guide">
+                <!-- 表の読み方の図解 -->
+            </div>
+            <div class="serial-number">
+                <span id="displaySeed"></span>
+            </div>
+            <div class="qr-code">
+                <!-- QRコード表示領域 -->
+            </div>
+        </div>
+        <div class="back">
+            <div class="character-table" id="passcard">
+                <!-- 文字変換表 -->
+            </div>
+            <div class="serial-number" id="backSerialNumber"></div>
+        </div>
+    </div>
+
+    <div class="card-controls">
+        <button onclick="flipCard()">カードを裏返す</button>
+        <button onclick="generateNewCard()">カードを再生成</button>
+    </div>
+
+    <div class="edit-sn">
+        <label for="seedInput">ここにご自身のカードのS/Nを入力してください(QRコードからコピーできます):</label>
+        <input type="text" id="seedInput" value="">
+        <button onclick="generateCard()">カード生成</button>
+    </div>
+
+    
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

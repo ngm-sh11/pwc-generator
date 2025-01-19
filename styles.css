@@ -1,0 +1,195 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* ページの高さを画面の高さに対応 */
+}
+
+body {
+    overflow-y: auto; /* 縦スクロールを有効化 */
+}
+
+.description-container {
+    width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+    color: #333;
+}
+
+.card-description h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.card-description p {
+    margin-bottom: 10px;
+}
+
+
+
+.card {
+    width: 600px; /* カードの幅 */
+    height: calc(600px / 1.618); /* カードの高さを縦横比1:1.618に */
+    perspective: 1000px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.6s;
+    overflow: hidden;
+}
+
+.front {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 中央に配置 */
+}
+
+.back {
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 中央に配置 */
+}
+
+.number-table {
+    position: absolute;
+    left: 120px;
+    width: 25%; 
+    height: 75%; 
+    margin-left: -15%; /* 元の設定に戻す */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1px;
+}
+
+.number-table div {
+    border: 1px solid #ddd;
+    position: relative;
+    aspect-ratio: 1 / 1; 
+    padding: 0; 
+}
+
+.number-table .top-left {
+    position: absolute;
+    top: 2px; 
+    left: 2px; 
+    font-size: 12px;
+}
+
+.number-table .bottom-right {
+    position: absolute;
+    bottom: 2px; 
+    right: 2px; 
+    font-size: 12px;
+}
+
+.number-table .main-char {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.table-guide {
+    position: absolute;
+    top: 5px;
+    left: 220px;
+    width: 60%;
+    height: 80%; 
+    margin-left: 10px; /* ガイドをテーブルから少し離す */
+    background: url('guide.png') no-repeat center;
+    background-size: contain;
+}
+
+.serial-number {
+    position: absolute;
+    bottom: 15px; 
+    top: 333px;
+    left: 50%; /* 中央揃えのための位置調整 */
+    transform: translateX(-50%); /* 中央揃え */
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center; /* テキストを中央揃え */
+}
+
+.qr-code {
+    position: absolute;
+    bottom: calc(15px + 80px); /* さらに上にずらす */
+    right: calc(15px + 95px); /* さらに左にずらす */
+    width: 0.5px; /* サイズを大きく */
+    height: 0.5px; /* サイズを大きく */
+}
+
+.character-table {
+    width: 25%; 
+    height: 75%; 
+    margin-left: -48%; /* 左に動かす */
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1px;
+}
+
+.character-table div {
+    border: 1px solid #ddd;
+    position: relative;
+    aspect-ratio: 1 / 1; 
+    padding: 0; 
+}
+
+.character-table .top-left {
+    position: absolute;
+    top: 2px; 
+    left: 2px; 
+    font-size: 12px;
+}
+
+.character-table .main-char {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-controls {
+    padding: 10px;
+}
+
+.edit-sn {
+    padding: 10px;
+}
+
+/* 新たに追加 */
+.back .serial-number {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
