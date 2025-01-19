@@ -180,7 +180,7 @@ body {
 }
 .card-controls button {
     position: absolute;
-    left: auto;
+    left: 200px;
 }
 .edit-sn {
     padding: 10px;
