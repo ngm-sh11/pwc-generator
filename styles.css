@@ -176,9 +176,11 @@ body {
 }
 
 .card-controls {
+    padding: 10px;
+}
+.card-controls button {
     padding: auto;
 }
-
 .edit-sn {
     padding: 10px;
 }
