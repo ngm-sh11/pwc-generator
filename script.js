@@ -102,30 +102,36 @@ function generateTable(seed) {
         table.push(row);
     }
 
-    let usedSourceChars = new Set();
-    let usedResultChars = new Set();
-
-    for (let i = 0; i < 4; i++) {
-        let row = [];
-        for (let j = 0; j < 10; j++) {
-            let sourceChar;
-            do {
-                sourceChar = chars[Math.floor(Math.random() * chars.length)];
-            } while (usedSourceChars.has(sourceChar));
-            usedSourceChars.add(sourceChar);
-
-            let resultChar;
-            do {
-                resultChar = resultChars[Math.floor(Math.random() * resultChars.length)];
-            } while (usedResultChars.has(resultChar));
-            usedResultChars.add(resultChar);
-
-            row.push({ topLeft: sourceChar, main: resultChar });
-        }
-        table.push(row);
+// 文字への変換表 (合計40セル)
+let usedSourceChars = new Set();
+let usedResultChars = new Set();
+let charIndex2 = 0;
+for (let i = 0; i < 4; i++) {
+    let row = [];
+    for (let j = 0; j < 10; j++) {
+        let sourceChar;
+        do {
+            sourceChar = chars[charIndex2 % chars.length];
+            charIndex2++;
+        } while (usedSourceChars.has(sourceChar));
+        usedSourceChars.add(sourceChar);
+        
+        let randomChars = shuffleArray(resultChars).slice(0, 40);
+        let selectedChars = ensureMinimumCharTypes(randomChars);
+        let resultChar;
+        do {
+            resultChar = selectedChars[Math.floor(Math.random() * selectedChars.length)];
+        } while (usedResultChars.has(resultChar));
+        usedResultChars.add(resultChar);
+        
+        row.push({ topLeft: sourceChar, main: resultChar });
     }
-    return table;
+    table.push(row);
 }
+
+return table;
+}
+
 
 // カードを生成する
 function generateCard() {
