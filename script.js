@@ -1,5 +1,5 @@
-// seedrandomの初期化を直接行う
-(function(global, module, define) {
+// seedrandomの初期化
+(function (global, module, define) {
     function Alea(seed) {
         var s0 = 0, s1 = 0, s2 = 0, c = 1;
         var mash = Mash();
@@ -21,11 +21,11 @@
             s1 = s2;
             return s2 = t - (c = t | 0);
         }
-        random.uint32 = function() {
+        random.uint32 = function () {
             return random() * 0x100000000; // 2^32
         };
-        random.fract53 = function() {
-            return random() + 
+        random.fract53 = function () {
+            return random() +
                 (random() * 0x200000 | 0) * 1.1102230246251565e-16; // 2^-53
         };
         random.version = 'Alea 0.9';
@@ -34,7 +34,7 @@
     }
     function Mash() {
         var n = 0xefc8249d;
-        var mash = function(data) {
+        var mash = function (data) {
             data = data.toString();
             for (var i = 0; i < data.length; i++) {
                 n += data.charCodeAt(i);
@@ -51,18 +51,18 @@
         return mash;
     }
     global.seedrandom = Alea;
-    global.Math.seedrandom = function(seed) {
+    global.Math.seedrandom = function (seed) {
         global.Math.random = Alea(seed);
     };
-})(this, {}, function() {});
+})(this, {}, function () { });
 
-// URLからS/N（seed）を取得する
+// URLからS/Nを取得する
 function getSNFromURL() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("seed") || ""; // "seed" パラメータが存在しない場合は空文字を返す
+    return params.get("seed") || ""; //パラメータが存在しない場合は空文字を返す
 }
 
-// 新しいシードを生成する
+// 新しいS/Nを生成する
 function generateSeed() {
     let seedParts = [];
     for (let i = 0; i < 4; i++) {
@@ -80,16 +80,15 @@ function shuffleArray(array) {
     return array;
 }
 
-// 一般的にパスワードに使用される特殊文字、「|」を除外
-const commonSpecialChars = '!@#$%^&*()_+-=[]{},.;:<>?';
+const specialChars = '!@#$%^&*()_+-=[]{},.;:<>?';
 
 
 function ensureMinimumCharTypes(chars, minCount = 6) {
     const types = {
-        upper: chars.filter(function(char) { return /[A-Z]/.test(char); }),
-        lower: chars.filter(function(char) { return /[a-z]/.test(char); }),
-        digit: chars.filter(function(char) { return /[0-9]/.test(char); }),
-        special: chars.filter(function(char) { return /[\W_]/.test(char) && char !== '|'; })
+        upper: chars.filter(function (char) { return /[A-Z]/.test(char); }),
+        lower: chars.filter(function (char) { return /[a-z]/.test(char); }),
+        digit: chars.filter(function (char) { return /[0-9]/.test(char); }),
+        special: chars.filter(function (char) { return /[\W_]/.test(char) && char !== '|'; })
     };
     Object.keys(types).forEach(type => {
         while (types[type].length < minCount) {
@@ -98,8 +97,8 @@ function ensureMinimumCharTypes(chars, minCount = 6) {
                 if (!types[type].includes(chars[i])) {
                     let regex;
                     if (type === 'special') {
-                        // 特殊文字の場合、commonSpecialCharsを正規表現に変換
-                        regex = new RegExp(`[${commonSpecialChars.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}]`);
+                        // 特殊文字の場合、specialCharsを正規表現に変換
+                        regex = new RegExp(`[${specialChars.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}]`);
                     } else {
                         // その他の型（大文字、小文字、数字）では単純に型をテスト
                         regex = new RegExp(`[${type[0].toUpperCase() + type.slice(1)}]`);
@@ -123,9 +122,11 @@ function generateTable(seed) {
     Math.seedrandom(seed);
     const numberTransformChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234'.split('');
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$*%'.split('');
-    let resultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('').concat(commonSpecialChars.split(''));
+    let resultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('').concat(specialChars.split(''));
 
     let table = [];
+
+    //数字への変換
     let usedNumbers = new Set();
     let topLeftIndex = 0;
     let bottomRightIndex = 15;
@@ -148,34 +149,34 @@ function generateTable(seed) {
         table.push(row);
     }
 
-// 文字への変換表 (合計40セル)
-let usedSourceChars = new Set();
-let usedResultChars = new Set();
-let charIndex2 = 0;
-for (let i = 0; i < 4; i++) {
-    let row = [];
-    for (let j = 0; j < 10; j++) {
-        let sourceChar;
-        do {
-            sourceChar = chars[charIndex2 % chars.length];
-            charIndex2++;
-        } while (usedSourceChars.has(sourceChar));
-        usedSourceChars.add(sourceChar);
-        
-        let randomChars = shuffleArray(resultChars).slice(0, 40);
-        let selectedChars = ensureMinimumCharTypes(randomChars);
-        let resultChar;
-        do {
-            resultChar = selectedChars[Math.floor(Math.random() * selectedChars.length)];
-        } while (usedResultChars.has(resultChar));
-        usedResultChars.add(resultChar);
-        
-        row.push({ topLeft: sourceChar, main: resultChar });
-    }
-    table.push(row);
-}
+    // 文字への変換
+    let usedSourceChars = new Set();
+    let usedResultChars = new Set();
+    let charIndex2 = 0;
+    for (let i = 0; i < 4; i++) {
+        let row = [];
+        for (let j = 0; j < 10; j++) {
+            let sourceChar;
+            do {
+                sourceChar = chars[charIndex2 % chars.length];
+                charIndex2++;
+            } while (usedSourceChars.has(sourceChar));
+            usedSourceChars.add(sourceChar);
 
-return table;
+            let randomChars = shuffleArray(resultChars).slice(0, 40);
+            let selectedChars = ensureMinimumCharTypes(randomChars);
+            let resultChar;
+            do {
+                resultChar = selectedChars[Math.floor(Math.random() * selectedChars.length)];
+            } while (usedResultChars.has(resultChar));
+            usedResultChars.add(resultChar);
+
+            row.push({ topLeft: sourceChar, main: resultChar });
+        }
+        table.push(row);
+    }
+
+    return table;
 }
 
 
@@ -215,7 +216,7 @@ function generateCard() {
     const qrCodeDiv = document.querySelector('.qr-code');
     qrCodeDiv.innerHTML = '';
     if (typeof QRCode !== 'undefined') {
-        // QRコードのURLをhttps://pwc-generator.vercel.app/?seed=[シリアルナンバー]に変更
+        // QRコードを生成
         new QRCode(qrCodeDiv, {
             text: `https://pwc-generator.vercel.app/?seed=${seed}`,
             width: 80,
@@ -238,7 +239,7 @@ function generateNewCard() {
     generateCard();
 }
 
-// カードをひっくり返す
+// 表裏を切替
 function flipCard() {
     const front = document.querySelector('.front');
     const back = document.querySelector('.back');
