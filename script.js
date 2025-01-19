@@ -80,13 +80,50 @@ function shuffleArray(array) {
     return array;
 }
 
+// 一般的にパスワードに使用される特殊文字、「|」を除外
+const commonSpecialChars = '!@#$%^&*()_+-=[]{},.;:<>?';
+
+
+function ensureMinimumCharTypes(chars, minCount = 6) {
+    const types = {
+        upper: chars.filter(function(char) { return /[A-Z]/.test(char); }),
+        lower: chars.filter(function(char) { return /[a-z]/.test(char); }),
+        digit: chars.filter(function(char) { return /[0-9]/.test(char); }),
+        special: chars.filter(function(char) { return /[\W_]/.test(char) && char !== '|'; })
+    };
+    Object.keys(types).forEach(type => {
+        while (types[type].length < minCount) {
+            let added = false;
+            for (let i = 0; i < chars.length; i++) {
+                if (!types[type].includes(chars[i])) {
+                    let regex;
+                    if (type === 'special') {
+                        // 特殊文字の場合、commonSpecialCharsを正規表現に変換
+                        regex = new RegExp(`[${commonSpecialChars.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}]`);
+                    } else {
+                        // その他の型（大文字、小文字、数字）では単純に型をテスト
+                        regex = new RegExp(`[${type[0].toUpperCase() + type.slice(1)}]`);
+                    }
+                    if (regex.test(chars[i])) {  // chars[i]を直接使用
+                        types[type].push(chars[i]);
+                        chars.push(chars.splice(i, 1)[0]);
+                        added = true;
+                        break;
+                    }
+                }
+            }
+            if (!added) break;
+        }
+    });
+    return chars;
+}
 
 // テーブルを生成する
 function generateTable(seed) {
     Math.seedrandom(seed);
     const numberTransformChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234'.split('');
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$*%'.split('');
-    const resultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};:,.<>?'.split('');
+    let resultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('').concat(commonSpecialChars.split(''));
 
     let table = [];
     let usedNumbers = new Set();
