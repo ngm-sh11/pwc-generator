@@ -193,3 +193,10 @@ body {
     font-size: 24px;
     text-align: center;
 }
+
+.screenshot {
+    position: absolute;
+    left: 15px;
+    height: 50%;
+    width: 50%;
+}
