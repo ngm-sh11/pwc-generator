@@ -176,7 +176,7 @@ body {
 }
 
 .card-controls {
-    padding: 10px;
+    padding: auto;
 }
 
 .edit-sn {
