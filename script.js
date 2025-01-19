@@ -1,4 +1,4 @@
-// seedrandomの初期化
+// seedrandomの初期化を直接行う
 (function(global, module, define) {
     function Alea(seed) {
         var s0 = 0, s1 = 0, s2 = 0, c = 1;
@@ -163,8 +163,9 @@ function generateCard() {
     const qrCodeDiv = document.querySelector('.qr-code');
     qrCodeDiv.innerHTML = '';
     if (typeof QRCode !== 'undefined') {
+        // QRコードのURLをhttps://pwc-generator.vercel.app/?seed=[シリアルナンバー]に変更
         new QRCode(qrCodeDiv, {
-            text: seed,
+            text: `https://pwc-generator.vercel.app/?seed=${seed}`,
             width: 80,
             height: 80,
             colorDark: "#000000",
