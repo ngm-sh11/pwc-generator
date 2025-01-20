@@ -40,7 +40,8 @@ body {
     width: 600px; 
     height: calc(600px / 1.618); 
     perspective: 1000px;
-    position: relative;
+    position: absolute;
+    left: auto;
     margin-bottom: 20px;
 }
 
