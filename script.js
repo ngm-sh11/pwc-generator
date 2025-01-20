@@ -59,7 +59,7 @@
 // URLからS/Nを取得する
 function getSNFromURL() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("seed") || "0000000000000000"; //パラメータが存在しない場合は0000000000000000を返す
+    return params.get("seed") || ""; //パラメータが存在しない場合は空文字を返す
 }
 
 // 新しいS/Nを生成する
