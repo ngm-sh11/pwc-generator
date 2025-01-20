@@ -73,8 +73,7 @@ body {
 .number-table {
     position: absolute;
     left: 120px;
-    width: 25%; 
-    height: 75%; 
+    width: 170px;  
     margin-left: -15%; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -143,7 +142,7 @@ body {
 }
 
 .character-table {
-    width: 400px; 
+    width: 450px; 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(5, 1fr);
