@@ -6,11 +6,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* ページの高さを画面の高さに対応 */
+    min-height: 100vh; 
 }
 
 body {
-    overflow-y: auto; /* 縦スクロールを有効化 */
+    overflow-y: auto; 
 }
 
 .description-container {
@@ -37,8 +37,8 @@ body {
 
 
 .card {
-    width: 600px; /* カードの幅 */
-    height: calc(600px / 1.618); /* カードの高さを縦横比1:1.618に */
+    width: 600px; 
+    height: calc(600px / 1.618); 
     perspective: 1000px;
     position: relative;
     margin-bottom: 20px;
@@ -60,14 +60,14 @@ body {
     z-index: 2;
     display: flex;
     justify-content: center;
-    align-items: center; /* 中央に配置 */
+    align-items: center;
 }
 
 .back {
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
-    align-items: center; /* 中央に配置 */
+    align-items: center; 
 }
 
 .number-table {
@@ -75,7 +75,7 @@ body {
     left: 120px;
     width: 25%; 
     height: 75%; 
-    margin-left: -15%; /* 元の設定に戻す */
+    margin-left: -15%; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -118,7 +118,7 @@ body {
     left: 220px;
     width: 60%;
     height: 80%; 
-    margin-left: 10px; /* ガイドをテーブルから少し離す */
+    margin-left: 10px; 
     background: url('guide.png') no-repeat center;
     background-size: contain;
 }
@@ -127,25 +127,23 @@ body {
     position: absolute;
     bottom: 15px; 
     top: 333px;
-    left: 50%; /* 中央揃えのための位置調整 */
-    transform: translateX(-50%); /* 中央揃え */
+    left: 50%; 
+    transform: translateX(-50%); 
     font-weight: bold;
     font-size: 24px;
-    text-align: center; /* テキストを中央揃え */
+    text-align: center; 
 }
 
 .qr-code {
     position: absolute;
-    bottom: calc(15px + 80px); /* さらに上にずらす */
-    right: calc(15px + 95px); /* さらに左にずらす */
-    width: 0.5px; /* サイズを大きく */
-    height: 0.5px; /* サイズを大きく */
+    bottom: calc(15px + 80px); 
+    right: calc(15px + 95px); 
+    width: 0.5px; 
+    height: 0.5px; 
 }
 
 .character-table {
-    width: 25%; 
-    height: 75%; 
-    margin-left: -48%; /* 左に動かす */
+    width: 400px; 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -183,7 +181,6 @@ body {
     padding: 10px;
 }
 
-/* 新たに追加 */
 .back .serial-number {
     position: absolute;
     bottom: 15px;
