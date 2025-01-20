@@ -108,6 +108,7 @@ body {
     top: 2px; 
     left: 2px; 
     font-size: 12px;
+    font-family: "SF-Mono";
 }
 
 .number-table .bottom-right {
@@ -115,6 +116,7 @@ body {
     bottom: 2px; 
     right: 2px; 
     font-size: 12px;
+    font-family: "SF-Mono";
 }
 
 .number-table .main-char {
@@ -122,8 +124,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: "SF-Mono-Bold";
     font-size: 20px;
-    font-weight: bold;
 }
 
 .table-guide {
@@ -143,7 +145,7 @@ body {
     top: 333px;
     left: 50%; 
     transform: translateX(-50%); 
-    font-weight: bold;
+    font-family: "SF-Mono-Bold";
     font-size: 24px;
     text-align: center; 
 }
@@ -176,6 +178,7 @@ body {
     top: 2px; 
     left: 2px; 
     font-size: 12px;
+    font-family: "SF-Mono";
 }
 
 .character-table .main-char {
@@ -184,7 +187,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 20px;
-    font-weight: bold;
+    font-family: "SF-Mono-Bold";
 }
 
 .card-controls {
@@ -200,7 +203,7 @@ body {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    font-weight: bold;
+    font-family: "SF-Mono-Bold";
     font-size: 24px;
     text-align: center;
 }
