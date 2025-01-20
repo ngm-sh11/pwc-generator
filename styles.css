@@ -1,15 +1,15 @@
 @font-face {
     font-family: "SF-Mono";
     src: url("font/SF-Mono-Regular.woff2") format('woff2'),
-    url("font/SFMono-Regular.woff") format('woff'),
-    url("font/SFMono-Regular.ttf") format('truetype');
+    url("font/SF-Mono-Regular.woff") format('woff'),
+    url("font/SF-Mono-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "SF-Mono-Bold";
-    src: url("font/SFMono-Bold.woff2") format('woff2'),
-    url("font/SFMono-Bold.woff") format('woff'),
-    url("font/SFMono-Bold.ttf") format('truetype');
+    src: url("font/SF-Mono-Bold.woff2") format('woff2'),
+    url("font/SF-Mono-Bold.woff") format('woff'),
+    url("font/SF-Mono-Bold.ttf") format('truetype');
 }
 
 body {
