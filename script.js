@@ -64,12 +64,14 @@ function getSNFromURL() {
 
 // 新しいS/Nを生成する
 function generateSeed() {
-    let seedParts = [];
-    for (let i = 0; i < 4; i++) {
-        let part = Math.floor(Math.random() * Math.pow(16, 4)).toString(16).padStart(4, '0').toUpperCase();
-        seedParts.push(part);
+    const length = 16;
+    const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
     }
-    return seedParts.join('');
+    return result;
 }
 
 function shuffleArray(array) {
