@@ -185,9 +185,10 @@ function generateTable(seed) {
 // カードを生成する
 function generateCard() {
     const seed = document.getElementById("seedInput").value || generateSeed();
+    const serial = seed.match(/.{1,4}/g).join("-");
     document.getElementById("seedInput").value = seed;
-    document.getElementById("displaySeed").textContent = seed;
-    document.getElementById("backSerialNumber").textContent = seed;
+    document.getElementById("displaySeed").textContent = serial;
+    document.getElementById("backSerialNumber").textContent = serial;
 
     Math.seedrandom(seed);
     const table = generateTable(seed);
