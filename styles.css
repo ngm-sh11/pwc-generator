@@ -214,6 +214,6 @@ body {
     left: 15px;
 }
 
-.monospace {
+.card-description .monospace {
     font-family: "SF Mono Bold";
 }
