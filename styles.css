@@ -213,3 +213,7 @@ body {
     position: static;
     left: 15px;
 }
+
+.monospace {
+    font-family: "SF Mono Bold";
+}
