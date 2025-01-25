@@ -207,8 +207,6 @@ body {
 .edit-sn {
     padding: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .description-container img {
