@@ -217,3 +217,9 @@ body {
 .how-to-use .monospace {
     font-family: "SF-Mono-Bold";
 }
+
+@media print {
+    .card-description {
+        display: none;
+    }
+}
