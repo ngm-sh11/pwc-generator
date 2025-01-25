@@ -20,11 +20,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; 
-}
-
-body {
-    overflow-y: auto; 
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .description-container {
@@ -48,13 +45,10 @@ body {
     margin-bottom: 10px;
 }
 
-
-
 .card {
     width: 600px; 
     height: calc(600px / 1.618); 
     perspective: 1000px;
-    left: auto;
     position: relative;
     margin-bottom: 20px;
 }
@@ -142,7 +136,6 @@ body {
 .serial-number {
     position: absolute;
     bottom: 15px; 
-    top: 333px;
     left: 50%; 
     transform: translateX(-50%); 
     font-family: "SF-Mono-Bold";
@@ -152,17 +145,17 @@ body {
 
 .qr-code {
     position: absolute;
-    bottom: calc(15px + 80px); 
-    right: calc(15px + 95px); 
-    width: 0.5px; 
-    height: 0.5px; 
+    bottom: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
 }
 
 .character-table {
     width: 450px; 
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 1px;
 }
 
@@ -196,16 +189,6 @@ body {
 
 .edit-sn {
     padding: 10px;
-}
-
-.back .serial-number {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "SF-Mono-Bold";
-    font-size: 24px;
-    text-align: center;
 }
 
 .description-container img {
