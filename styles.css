@@ -225,6 +225,9 @@ body {
     font-family: "SF-Mono-Bold";
 }
 
+.label {
+    margin: 10px;
+}
 @media print {
     .card-description {
         display: none;
