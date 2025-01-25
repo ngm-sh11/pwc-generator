@@ -52,14 +52,14 @@
             </div>
         </div>
 
-        <p>このページはPCで使用されることを想定して作成されています。スマートフォンでは表示が乱れることがありますので、恐れ入りますがPCから御アクセスください。</p>
         <div class="card-controls">
             <button onclick="generateNewCard()">新しくカードを作成</button><br>
         </div>
+        <p class="label">このページはPCで使用されることを想定して作成されています。スマートフォンでは表示が乱れることがありますので、恐れ入りますがPCから御アクセスください。</p>
+        
 
+        <p class="label">ここにご自身のカードのS/Nをハイフンなしで入力してください(カードに記載のQRコードからアクセスした場合は既に入力されています)</p>
         <div class="edit-sn">
-            <label
-                for="seedInput">ここにご自身のカードのS/Nをハイフンなしで入力してください(カードに記載のQRコードからアクセスした場合は既に入力されています)</label>
             <input type="text" id="seedInput" value>
             <button onclick="generateCard()">カード生成</button>
         </div>
