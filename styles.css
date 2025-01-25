@@ -67,12 +67,14 @@ body {
 
 .front {
     z-index: 2;
+    transform: rotateY(0deg);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .back {
+    z-index: 1;
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
