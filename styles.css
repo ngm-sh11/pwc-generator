@@ -54,7 +54,9 @@ body {
 .how-to-use p {
     margin-bottom: 10px;
 }
-
+.card-content {
+    display: flex;
+}
 .card {
     width: 600px; 
     height: calc(600px / 1.618); 
@@ -197,7 +199,6 @@ body {
 }
 
 .card-controls {
-    display: flex;
     padding: 10px;
     display: flex;
     align-items: center;
