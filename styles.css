@@ -197,11 +197,18 @@ body {
 }
 
 .card-controls {
+    display: flex;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .edit-sn {
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .description-container img {
