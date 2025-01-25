@@ -75,7 +75,7 @@ body {
 
 .back {
     z-index: 1;
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
     display: flex;
     justify-content: center;
     align-items: center; 
