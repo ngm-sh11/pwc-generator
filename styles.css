@@ -222,4 +222,7 @@ body {
     .card-description {
         display: none;
     }
+    .card-controls {
+        display: none;
+    }
 }
