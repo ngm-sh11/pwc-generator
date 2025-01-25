@@ -225,4 +225,15 @@ body {
     .card-controls {
         display: none;
     }
+    .edit-sn {
+        display: none;
+    }
+    .table-guide {
+        display: block !important;
+        visibility: visible !important;
+        background-image: url('guide.png') !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: contain !important;
+    }
 }
