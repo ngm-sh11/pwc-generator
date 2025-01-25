@@ -45,6 +45,16 @@ body {
     margin-bottom: 10px;
 }
 
+.how-to-use h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.how-to-use p {
+    margin-bottom: 10px;
+}
+
 .card {
     width: 600px; 
     height: calc(600px / 1.618); 
@@ -201,5 +211,9 @@ body {
 }
 
 .card-description .monospace {
+    font-family: "SF-Mono-Bold";
+}
+
+.how-to-use .monospace {
     font-family: "SF-Mono-Bold";
 }
