@@ -84,7 +84,6 @@ function shuffleArray(array) {
 
 const specialChars = '!@#$%^&*()_+-=[]{},.;:<>?';
 
-
 function ensureMinimumCharTypes(chars, minCount = 6) {
     const types = {
         upper: chars.filter(function (char) { return /[A-Z]/.test(char); }),
@@ -181,7 +180,6 @@ function generateTable(seed) {
     return table;
 }
 
-
 // カードを生成する
 function generateCard() {
     const seed = document.getElementById("seedInput").value || generateSeed();
@@ -203,7 +201,7 @@ function generateCard() {
             </div>`;
         }
     }
-    document.querySelector('.number-table').innerHTML = numberTableHTML;
+    document.querySelector('.front .number-table').innerHTML = numberTableHTML;
 
     let characterTableHTML = '';
     for (let i = 5; i < 9; i++) {
@@ -214,9 +212,9 @@ function generateCard() {
             </div>`;
         }
     }
-    document.getElementById('passcard').innerHTML = characterTableHTML;
+    document.querySelector('.back #passcard').innerHTML = characterTableHTML;
 
-    const qrCodeDiv = document.querySelector('.qr-code');
+    const qrCodeDiv = document.querySelector('.back .qr-code');
     qrCodeDiv.innerHTML = '';
     if (typeof QRCode !== 'undefined') {
         // QRコードを生成
@@ -240,19 +238,6 @@ function generateCard() {
 function generateNewCard() {
     document.getElementById('seedInput').value = '';
     generateCard();
-}
-
-// 表裏を切替
-function flipCard() {
-    const front = document.querySelector('.front');
-    const back = document.querySelector('.back');
-    if (front.style.transform === 'rotateY(180deg)') {
-        front.style.transform = 'rotateY(0deg)';
-        back.style.transform = 'rotateY(180deg)';
-    } else {
-        front.style.transform = 'rotateY(180deg)';
-        back.style.transform = 'rotateY(0deg)';
-    }
 }
 
 // ページ読み込み時にURLのS/Nを使用してカードを生成
