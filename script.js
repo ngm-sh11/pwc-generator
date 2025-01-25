@@ -180,7 +180,7 @@ function generateTable(seed) {
     return table;
 }
 
-//カードを生成する
+// カードを生成する
 function generateCard() {
     const seed = document.getElementById("seedInput").value || generateSeed();
     const serial = seed.match(/.{1,4}/g).join("-");
@@ -190,7 +190,6 @@ function generateCard() {
 
     Math.seedrandom(seed);
     const table = generateTable(seed);
-
 
     let numberTableHTML = '';
     for (let i = 0; i < 5; i++) {
@@ -204,7 +203,6 @@ function generateCard() {
     }
     document.querySelector('.front .number-table').innerHTML = numberTableHTML;
 
-
     let characterTableHTML = '';
     for (let i = 5; i < 9; i++) {
         for (let j = 0; j < 10; j++) {
@@ -216,10 +214,10 @@ function generateCard() {
     }
     document.querySelector('.back #passcard').innerHTML = characterTableHTML;
 
-
-    const qrCodeDiv = document.querySelector('.front .qr-code');
+    const qrCodeDiv = document.querySelector('.back .qr-code');
     qrCodeDiv.innerHTML = '';
     if (typeof QRCode !== 'undefined') {
+        // QRコードを生成
         new QRCode(qrCodeDiv, {
             text: `https://pwc-generator.vercel.app/?seed=${seed}`,
             width: 80,
